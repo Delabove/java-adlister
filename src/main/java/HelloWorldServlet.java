@@ -19,5 +19,15 @@ public class HelloWorldServlet extends HttpServlet {
         }catch (NullPointerException e){
             out.println("<h1>Hello World!</h1>");
         }
+
+//    Fer's example. Both are correct:
+
+//        if(name == null){
+//            String name = request.getParameter("name");
+//            out.println("<h1>Hello, " + name + " World!</h1>");
+//        }else{
+//            out.println("<h1>Hello World!</h1>");
+//        }
+
     }
 }
