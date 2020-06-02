@@ -13,9 +13,11 @@ public class HelloWorldServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        String name = request.getParameter("name");
-        out.println("<h1>Hello," + name + " World!</h1>");
-
-        try{
+        try {
+            String name = request.getParameter("name");
+            out.println("<h1>Hello, " + name + " World!</h1>");
+        }catch (NullPointerException e){
+            out.println("<h1>Hello World!</h1>");
+        }
     }
 }
