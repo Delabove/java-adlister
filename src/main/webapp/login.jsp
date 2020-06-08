@@ -7,34 +7,43 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<% String userName = (request.getParameter("username") != null) ? request.getParameter("username")  : "";
- String password = (request.getParameter("password") != null) ? request.getParameter("password")  : "";
+<%
+    if(request.getMethod().equalsIgnoreCase("post")) {
+        String userName = (request.getParameter("username") != null) ? request.getParameter("username") : "";
+        String password = (request.getParameter("password") != null) ? request.getParameter("password") : "";
 
-    if (userName == "admin"
-            && password == "password") {
-        response.sendRedirect("/profile.jsp");
+        if (userName.equals("admin")
+                && password.equals("password")) {
+            response.sendRedirect("/profile.jsp");
+        }
     }
 %>
-<jsp:include page="partials/navbar.jsp"></jsp:include>
-<jsp:include page="partials/head.jsp"></jsp:include>
 
 <html>
 <head>
-    <title>Title</title>
+    <jsp:include page="partials/navbar.jsp"></jsp:include>
+    <jsp:include page="partials/head.jsp"></jsp:include>
 </head>
+
+
+
 <body>
-<%--<%! String badWord = "admin"; %>--%>
-<form action="/login.jsp" method="post">
-    <p>Path: <%= request.getRequestURL() %></p>
-    <p>Query String: <%= request.getQueryString() %></p>
 
-    Name:<input type="text" name="username"/><br/><br/>
-    <p>"name" parameter: <%= request.getParameter("name") %></p>
-    Password:<input type="password" name="userpass"/><br/><br/>
-    <p>"password" parameter: <%= request.getParameter("password") %></p>
-    <input type="submit" value="login"/>
-</form>
-
+<jsp:include page="partials/navbar.jsp" />
+<div class="container">
+    <h1>Please Log In</h1>
+    <form action="/login.jsp" method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" name="username" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" name="password" class="form-control" type="password">
+        </div>
+        <input type="submit" class="btn btn-primary btn-block" value="Log In">
+    </form>
+</div>
 
 </body>
 </html>
