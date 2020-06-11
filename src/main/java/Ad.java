@@ -4,6 +4,7 @@ public class Ad {
     private String title;
     private String description;
 
+//    Read Constructor
     public Ad(long id, long userId, String title, String description) {
         this.id = id;
         this.userId = userId;
@@ -11,6 +12,7 @@ public class Ad {
         this.description = description;
     }
 
+//    Create Constructor
     public Ad(long userId, String title, String description) {
         this.userId = userId;
         this.title = title;
